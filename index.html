@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>משימות</title>
+  <title>שְׁפִּילְקֶעס — ניהול משימות</title>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#1a56db" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="משימות" />
+  <meta name="apple-mobile-web-app-title" content="שְׁפִּילְקֶעס" />
   <link rel="apple-touch-icon" href="icons/icon-192.svg" />
   <link rel="icon" href="icons/icon-192.svg" />
 
@@ -21,7 +21,16 @@
 </head>
 <body>
   <header class="app-header">
-    <h1 id="header-title">המשימות שלי</h1>
+    <div class="brand">
+      <svg class="brand-logo" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="36" height="36" rx="9" fill="#ffffff"/>
+        <path d="M10 18l5 5 11-11" stroke="#1a56db" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="brand-text">
+        <h1 id="header-title">שְׁפִּילְקֶעס</h1>
+        <p class="brand-subtitle">ניהול משימות</p>
+      </div>
+    </div>
     <button id="btn-settings" class="icon-btn" aria-label="הגדרות">
       <i class="ti ti-settings"></i>
     </button>

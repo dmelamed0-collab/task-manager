@@ -1,14 +1,14 @@
 {
-  "name": "משימות",
-  "short_name": "משימות",
-  "description": "אפליקציית ניהול משימות",
+  "name": "שְׁפִּילְקֶעס",
+  "short_name": "שפּילקעס",
+  "description": "ניהול משימות",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "dir": "rtl",
   "lang": "he",
   "theme_color": "#1a56db",
-  "background_color": "#ffffff",
+  "background_color": "#1a56db",
   "orientation": "portrait",
   "icons": [
     {
