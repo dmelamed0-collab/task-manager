@@ -125,6 +125,18 @@ button, input, select, textarea {
   gap: 10px;
 }
 
+.category-group-header {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  padding: 4px 4px 0;
+  margin-top: 4px;
+}
+
+.category-group-header:first-child {
+  margin-top: 0;
+}
+
 .task-card {
   position: relative;
   overflow: hidden;

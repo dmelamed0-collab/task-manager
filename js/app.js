@@ -14,7 +14,7 @@ import {
   sortByDueDate,
   filterTasks,
 } from "./tasks.js";
-import { renderTaskList, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js";
+import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js";
 
 const views = {
   list: document.getElementById("view-list"),
@@ -70,7 +70,7 @@ function refreshTaskList() {
     status: filterStatusEl.value,
   });
   const sorted = sortByDueDate(filtered).map((t) => ({ ...t, overdue: isOverdue(t) }));
-  renderTaskList(taskListEl, emptyStateEl, sorted, {
+  renderTaskListGrouped(taskListEl, emptyStateEl, sorted, loadCategories(), {
     onToggle: (id) => {
       toggleComplete(id);
       refreshTaskList();
