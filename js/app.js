@@ -214,7 +214,10 @@ btnSettings.addEventListener("click", () => {
   goToView("settings");
 });
 
-btnBackSettings.addEventListener("click", () => goToView("list"));
+btnBackSettings.addEventListener("click", () => {
+  refreshTaskList();
+  goToView("list");
+});
 
 btnSettingsAddCategory.addEventListener("click", () => {
   const name = settingsNewCategoryInput.value.trim();

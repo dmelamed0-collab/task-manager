@@ -66,6 +66,17 @@ export function addCategory(name) {
 export function deleteCategory(name) {
   const categories = getCategories().filter((c) => c !== name);
   saveCategories(categories);
+
+  const tasks = getTasks();
+  let changed = false;
+  for (const task of tasks) {
+    if (task.category === name) {
+      task.category = "";
+      changed = true;
+    }
+  }
+  if (changed) saveTasks(tasks);
+
   return categories;
 }
 
