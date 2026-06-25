@@ -1,0 +1,393 @@
+/* style.css — עיצוב כללי, RTL, מצב כהה, רכיבי UI (כרטיסיות, טופס, FAB) */
+
+:root {
+  --color-primary: #1a56db;
+  --color-bg: #ffffff;
+  --color-surface: #f7f8fa;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-high: #dc2626;
+  --color-medium: #d97706;
+  --color-low: #16a34a;
+  --color-danger: #dc2626;
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111827;
+    --color-surface: #1f2937;
+    --color-text: #f3f4f6;
+    --color-text-muted: #9ca3af;
+    --color-border: #374151;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  text-align: right;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  color: inherit;
+}
+
+.view {
+  padding: 12px 16px 96px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--color-primary);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.icon-btn.danger {
+  color: var(--color-danger);
+}
+
+.app-header .icon-btn {
+  color: #fff;
+}
+
+/* פילטרים */
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.filters select {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.btn-text {
+  grid-column: 1 / -1;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* רשימת משימות */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.task-card-swipe-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color-danger);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  font-size: 1.3rem;
+}
+
+.task-card-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  background: var(--color-surface);
+}
+
+.task-card.completed .task-card-title {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.task-card.overdue .task-card-title,
+.task-card.overdue .task-date {
+  color: var(--color-high);
+  font-weight: 600;
+}
+
+.task-checkbox {
+  min-width: 22px;
+  min-height: 22px;
+  flex-shrink: 0;
+}
+
+.task-card-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-card-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-card-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.priority-tag {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #fff;
+}
+
+.priority-tag.priority-high { background: var(--color-high); }
+.priority-tag.priority-medium { background: var(--color-medium); }
+.priority-tag.priority-low { background: var(--color-low); }
+
+.delete-btn {
+  display: none;
+  flex-shrink: 0;
+}
+
+@media (hover: hover) {
+  .delete-btn {
+    display: flex;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--color-text-muted);
+  margin-top: 60px;
+}
+
+/* טופס */
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--color-primary);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.form-header h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.form-header .icon-btn {
+  color: #fff;
+}
+
+.form-header .icon-btn.danger {
+  color: #fecaca;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field span {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.error-msg {
+  color: var(--color-danger);
+  font-size: 0.85rem;
+}
+
+.inline-add {
+  display: flex;
+  gap: 8px;
+}
+
+.inline-add input {
+  flex: 1;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.btn-primary {
+  min-height: 44px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* הגדרות / קטגוריות */
+.settings-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+/* כפתור צף */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* טוסט */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  right: 50%;
+  transform: translateX(50%) translateY(20px);
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 30;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(50%) translateY(0);
+}
