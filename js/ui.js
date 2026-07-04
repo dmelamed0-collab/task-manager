@@ -70,7 +70,14 @@ export function renderTaskListGrouped(container, emptyState, tasks, categoryOrde
     groups.get(key).push(task);
   }
 
-  const orderedKeys = [...categoryOrder.filter((c) => groups.has(c)), ...[...groups.keys()].filter((k) => !categoryOrder.includes(k))];
+  const seen = new Set();
+  const orderedKeys = [];
+  for (const c of categoryOrder) {
+    if (groups.has(c) && !seen.has(c)) { orderedKeys.push(c); seen.add(c); }
+  }
+  for (const k of groups.keys()) {
+    if (!seen.has(k)) { orderedKeys.push(k); seen.add(k); }
+  }
 
   for (const key of orderedKeys) {
     const groupHeader = document.createElement("li");

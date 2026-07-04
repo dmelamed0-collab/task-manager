@@ -79,7 +79,10 @@ export function getCategories() {
     return [...DEFAULT_CATEGORIES];
   }
   try {
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    const deduped = [...new Set(parsed)];
+    if (deduped.length !== parsed.length) saveCategories(deduped);
+    return deduped;
   } catch {
     return [...DEFAULT_CATEGORIES];
   }
