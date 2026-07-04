@@ -1,6 +1,6 @@
 // tasks.js — לוגיקת ניהול משימות וקטגוריות (CRUD, מיון, סינון)
 
-import { getTasks, saveTasks, getCategories, saveCategories, generateId } from "./storage.js?v=5";
+import { getTasks, saveTasks, getCategories, saveCategories, generateId } from "./storage.js?v=6";
 
 export function loadTasks() {
   return getTasks();
@@ -78,8 +78,13 @@ export function isOverdue(task) {
   return due < today;
 }
 
-export function sortByDueDate(tasks) {
+const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 };
+
+export function sortByPriorityThenDate(tasks) {
   return [...tasks].sort((a, b) => {
+    const pa = PRIORITY_ORDER[a.priority] ?? 1;
+    const pb = PRIORITY_ORDER[b.priority] ?? 1;
+    if (pa !== pb) return pa - pb;
     if (!a.dueDate && !b.dueDate) return 0;
     if (!a.dueDate) return 1;
     if (!b.dueDate) return -1;

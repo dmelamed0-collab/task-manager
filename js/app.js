@@ -11,10 +11,10 @@ import {
   addCategory,
   deleteCategory,
   isOverdue,
-  sortByDueDate,
+  sortByPriorityThenDate,
   filterTasks,
-} from "./tasks.js?v=5";
-import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js?v=5";
+} from "./tasks.js?v=6";
+import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js?v=6";
 
 const views = {
   list: document.getElementById("view-list"),
@@ -69,7 +69,7 @@ function refreshTaskList() {
     priority: filterPriorityEl.value,
     status: filterStatusEl.value,
   });
-  const sorted = sortByDueDate(filtered).map((t) => ({ ...t, overdue: isOverdue(t) }));
+  const sorted = sortByPriorityThenDate(filtered).map((t) => ({ ...t, overdue: isOverdue(t) }));
   renderTaskListGrouped(taskListEl, emptyStateEl, sorted, loadCategories(), {
     onToggle: (id) => {
       toggleComplete(id);
