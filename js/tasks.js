@@ -1,6 +1,6 @@
 // tasks.js — לוגיקת ניהול משימות וקטגוריות (CRUD, מיון, סינון)
 
-import { getTasks, saveTasks, getCategories, saveCategories, generateId } from "./storage.js?v=6";
+import { getTasks, saveTasks, getCategories, saveCategories, generateId } from "./storage.js?v=7";
 
 export function loadTasks() {
   return getTasks();

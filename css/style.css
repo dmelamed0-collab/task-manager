@@ -54,6 +54,7 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   padding: 16px;
+  padding-top: calc(16px + env(safe-area-inset-top));
   background: var(--color-primary);
   color: #fff;
   position: sticky;

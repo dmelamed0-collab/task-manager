@@ -13,8 +13,8 @@ import {
   isOverdue,
   sortByPriorityThenDate,
   filterTasks,
-} from "./tasks.js?v=6";
-import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js?v=6";
+} from "./tasks.js?v=7";
+import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js?v=7";
 
 const views = {
   list: document.getElementById("view-list"),
