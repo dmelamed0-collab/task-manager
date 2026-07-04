@@ -13,8 +13,8 @@ import {
   isOverdue,
   sortByDueDate,
   filterTasks,
-} from "./tasks.js?v=4";
-import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js?v=4";
+} from "./tasks.js?v=5";
+import { renderTaskListGrouped, populateCategorySelect, renderCategoryList, showToast, switchView } from "./ui.js?v=5";
 
 const views = {
   list: document.getElementById("view-list"),
@@ -91,7 +91,7 @@ function refreshFilterCategories() {
 
 function refreshFormCategories() {
   const categories = loadCategories();
-  populateCategorySelect(fieldCategory, categories);
+  populateCategorySelect(fieldCategory, categories, { includeEmptyOption: true, placeholder: "ללא קטגוריה" });
 }
 
 function refreshSettings() {
